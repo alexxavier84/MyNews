@@ -30,44 +30,35 @@ extension NewsClient{
                 return
             }
             
-            completionHandlerForNewsSource(self.newsSourceFromResult(newsSources), nil)
+            completionHandlerForNewsSource(NewsSource.newsSourceFromResult(newsSources), nil)
         }
     
     }
     
-    func getTopHeadlines(country: String, completionHandlerForTopHeadlines: @escaping(_ result: [[String: AnyObject]]?, _ error: NSError?) -> Void){
+    func getTopHeadlines(country: String, completionHandlerForTopHeadlines: @escaping(_ result: [TopHeadline]?, _ error: NSError?) -> Void){
         
         let parameters = [
             NewsClient.ParameterKeys.Country : country,
             NewsClient.ParameterKeys.ApiKey : NewsClient.Constants.ApiKey
         ]
         
-        self.taskForGETMethod(method: NewsClient.Methods.Sources, parameters: parameters as [String : AnyObject]) { (response, error) in
+        self.taskForGETMethod(method: NewsClient.Methods.TopHeadlines, parameters: parameters as [String : AnyObject]) { (response, error) in
             
             guard error == nil else{
                 completionHandlerForTopHeadlines(nil, error)
                 return
             }
             
-            guard let topHeadlines = response![NewsClient.JSONResponseKeys.Sources] as? [[String: AnyObject]] else {
-                completionHandlerForTopHeadlines(nil, NSError(domain: "getNewsSources", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse Top headlines json"]))
+            guard let topHeadlines = response![NewsClient.JSONResponseKeys.Articles] as? [[String: AnyObject]] else {
+                completionHandlerForTopHeadlines(nil, NSError(domain: "getTopHeadlines", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse Top headlines json"]))
                 return
             }
             
-            completionHandlerForTopHeadlines(topHeadlines, nil)
+            completionHandlerForTopHeadlines(TopHeadline.topHeadlinesFromResult(topHeadlines), nil)
         }
         
     }
     
-    func newsSourceFromResult(_ result: [[String: AnyObject]]) -> [NewsSource]{
-        
-        var newsSources = [NewsSource]()
-        
-        for newsSource in result {
-            newsSources.append(NewsSource(newsSource))
-        }
-        
-        return newsSources as [NewsSource]
-    }
+    
     
 }

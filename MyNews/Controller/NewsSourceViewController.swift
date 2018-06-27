@@ -7,12 +7,11 @@
 //
 
 import Foundation
-
 import UIKit
 
 class NewsSourceViewController: UIViewController {
     
-    var newsSources: [NewsSource]?
+    var newsSources: [NewsSource] = [NewsSource]()
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +20,15 @@ class NewsSourceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarItem.title = "News Channels"
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.delegate = self
         
         NewsClient.sharedInstance().getNewsSources(language: "en", country: "In") { (newsSources, error) in
             
@@ -42,12 +50,12 @@ class NewsSourceViewController: UIViewController {
                 return
             }
             
-            self.newsSources = newsSources
+            self.newsSources = newsSources!
+            
+            performUIUpdateOnMain {
+                self.tableView.reloadData()
+            }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
 }
@@ -55,12 +63,14 @@ class NewsSourceViewController: UIViewController {
 extension NewsSourceViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.newsSources?.count ?? 0
+        return self.newsSources.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        tableView.dequeueReusableCell(withIdentifier: "newsSourceReuseIdnetifier", for: indexPath)
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "newsSourceReuseIdnetifier", for: indexPath)
+        tableCell.textLabel?.text = self.newsSources[indexPath.item].name
+        return tableCell
     }
     
 }

@@ -26,4 +26,15 @@ struct NewsSource : Codable {
         language = dictionary[NewsClient.JSONResponseKeys.Language] as? String
         country = dictionary[NewsClient.JSONResponseKeys.Country] as? Double
     }
+    
+    static func newsSourceFromResult(_ result: [[String: AnyObject]]) -> [NewsSource]{
+        
+        var newsSources = [NewsSource]()
+        
+        for newsSource in result {
+            newsSources.append(NewsSource(newsSource))
+        }
+        
+        return newsSources as [NewsSource]
+    }
 }

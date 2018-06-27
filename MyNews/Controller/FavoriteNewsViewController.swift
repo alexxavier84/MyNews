@@ -29,11 +29,13 @@ class FavoriteNewsViewController: UIViewController {
 extension FavoriteNewsViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        
+        return tableCell
     }
     
 }

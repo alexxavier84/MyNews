@@ -23,8 +23,9 @@
 		18E3120D20E1C57100C0437B /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3120C20E1C57100C0437B /* GCDBlackBox.swift */; };
 		18E3120F20E1C5BD00C0437B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3120E20E1C5BD00C0437B /* DataController.swift */; };
 		18E3121120E1CADB00C0437B /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3121020E1CADB00C0437B /* NewsSource.swift */; };
-		18E3121320E1CBDA00C0437B /* TopHeadlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3121220E1CBDA00C0437B /* TopHeadlines.swift */; };
+		18E3121320E1CBDA00C0437B /* TopHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3121220E1CBDA00C0437B /* TopHeadline.swift */; };
 		18E3121520E1D03B00C0437B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3121420E1D03B00C0437B /* News.swift */; };
+		18E3121820E3DBB000C0437B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E3121720E3DBB000C0437B /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +47,9 @@
 		18E3120C20E1C57100C0437B /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		18E3120E20E1C5BD00C0437B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		18E3121020E1CADB00C0437B /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
-		18E3121220E1CBDA00C0437B /* TopHeadlines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlines.swift; sourceTree = "<group>"; };
+		18E3121220E1CBDA00C0437B /* TopHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadline.swift; sourceTree = "<group>"; };
 		18E3121420E1D03B00C0437B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		18E3121720E3DBB000C0437B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E3121820E3DBB000C0437B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +69,7 @@
 			children = (
 				189A0DF320DFA56600598448 /* MyNews */,
 				189A0DF220DFA56600598448 /* Products */,
+				18E3121620E3DBB000C0437B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,7 +109,7 @@
 			children = (
 				189A0E0820DFA63900598448 /* News */,
 				18E3121020E1CADB00C0437B /* NewsSource.swift */,
-				18E3121220E1CBDA00C0437B /* TopHeadlines.swift */,
+				18E3121220E1CBDA00C0437B /* TopHeadline.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -159,6 +163,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		18E3121620E3DBB000C0437B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18E3121720E3DBB000C0437B /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,6 +204,11 @@
 					189A0DF020DFA56600598448 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -241,7 +258,7 @@
 				18E3120D20E1C57100C0437B /* GCDBlackBox.swift in Sources */,
 				189A0DF520DFA56600598448 /* AppDelegate.swift in Sources */,
 				189A0E1A20DFE47400598448 /* NewsSourceViewController.swift in Sources */,
-				18E3121320E1CBDA00C0437B /* TopHeadlines.swift in Sources */,
+				18E3121320E1CBDA00C0437B /* TopHeadline.swift in Sources */,
 				189A0E1220DFAD4600598448 /* LocationNewsViewController.swift in Sources */,
 				189A0E0A20DFA65200598448 /* NewsConstants.swift in Sources */,
 				189A0E0C20DFA67800598448 /* NewsClient.swift in Sources */,
