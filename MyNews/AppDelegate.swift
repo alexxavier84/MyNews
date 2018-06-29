@@ -13,9 +13,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let mapLoader = MapLoader()
+    
+    let dataController = DataController(modelName: "My_News")
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        mapLoader.load()
+        dataController.load()
+        
+        let tabBarController = window?.rootViewController as! UITabBarController
+        let everyNewsNavigationController = tabBarController.viewControllers![0] as! UINavigationController
+        let everyNewsViewController = everyNewsNavigationController.topViewController as! EveryNewsViewController
+        everyNewsViewController.dataController = dataController
+        
         return true
     }
 
@@ -39,6 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        saveViewContext()
+    }
+    
+    func saveViewContext() {
+        try? dataController.viewContext.save()
     }
 
 

@@ -35,7 +35,7 @@ extension NewsClient{
     
     }
     
-    func getTopHeadlines(country: String, completionHandlerForTopHeadlines: @escaping(_ result: [TopHeadline]?, _ error: NSError?) -> Void){
+    func getTopHeadlines(country: String, completionHandlerForTopHeadlines: @escaping(_ result: [NewsContent]?, _ error: NSError?) -> Void){
         
         let parameters = [
             NewsClient.ParameterKeys.Country : country,
@@ -54,11 +54,36 @@ extension NewsClient{
                 return
             }
             
-            completionHandlerForTopHeadlines(TopHeadline.topHeadlinesFromResult(topHeadlines), nil)
+            completionHandlerForTopHeadlines(NewsContent.newsContentFromResult(topHeadlines), nil)
         }
         
     }
     
+    func getTodaysNews(fromDate: String, toDate: String, completionHandlerForTodaysNews: @escaping(_ result: [NewsContent]?, _ error: NSError?) -> Void){
+        
+        let parameters = [
+            NewsClient.ParameterKeys.From : fromDate,
+            NewsClient.ParameterKeys.To : toDate,
+            NewsClient.ParameterKeys.Domain : NewsClient.Constants.Domains,
+            NewsClient.ParameterKeys.ApiKey : NewsClient.Constants.ApiKey
+        ]
+        
+        self.taskForGETMethod(method: NewsClient.Methods.Everything, parameters: parameters as [String : AnyObject]) { (response, error) in
+            
+            guard error == nil else{
+                completionHandlerForTodaysNews(nil, error)
+                return
+            }
+            
+            guard let topHeadlines = response![NewsClient.JSONResponseKeys.Articles] as? [[String: AnyObject]] else {
+                completionHandlerForTodaysNews(nil, NSError(domain: "getTopHeadlines", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse every new for today json"]))
+                return
+            }
+            
+            completionHandlerForTodaysNews(NewsContent.newsContentFromResult(topHeadlines), nil)
+        }
+        
+    }
     
     
 }

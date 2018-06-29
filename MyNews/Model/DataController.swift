@@ -39,7 +39,7 @@ class DataController {
                 fatalError(error!.localizedDescription)
             }
             
-            self.autoSaveViewContext()
+            //self.autoSaveViewContext()
             self.configureContexts()
             completion?()
         }

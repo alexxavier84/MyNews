@@ -11,6 +11,8 @@ import UIKit
 
 class NewsSourceViewController: UIViewController {
     
+    var dataController:DataController!
+    
     var newsSources: [NewsSource] = [NewsSource]()
     
     
@@ -29,8 +31,9 @@ class NewsSourceViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.tableView.delegate = self
+        var isoCountryCode = UserDefaults.standard.value(forKey: "countryCode") ?? "us"
         
-        NewsClient.sharedInstance().getNewsSources(language: "en", country: "In") { (newsSources, error) in
+        NewsClient.sharedInstance().getNewsSources(language: "en", country: isoCountryCode as! String) { (newsSources, error) in
             
             func showErrorMessage(_ errorMessage: NSError) {
                 performUIUpdateOnMain {
@@ -56,6 +59,26 @@ class NewsSourceViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        /*var topNewsViewController = self.tabBarController?.viewControllers![1] as! TopNewsViewController
+        topNewsViewController.dataController = self.dataController
+        
+        var everyNewsViewController = self.tabBarController?.viewControllers![0] as! EveryNewsViewController
+        everyNewsViewController.dataController = self.dataController
+        
+        var favoriteNewsViewController = self.tabBarController?.viewControllers![2] as! FavoriteNewsViewController
+        favoriteNewsViewController.dataController = self.dataController*/
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        /*if segue.identifier == "showNewsLikeIdentifier"{
+            if let newsLikeReasonViewController = segue.destination as? NewsLikeReasonViewController {
+                newsLikeReasonViewController.dataController = self.dataController
+                
+            }
+        }*/
     }
     
 }

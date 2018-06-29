@@ -15,6 +15,7 @@ extension NewsClient{
         
         // MARK: API Key
         static let ApiKey = "93c92a9a9df248dabb6aa7948659a754"
+        static let Domains = "wsj.com,nytimes.com,ndtv.com"
         
         // MARK: URLs
         static let ApiScheme = "https"
@@ -54,6 +55,7 @@ extension NewsClient{
         static let To = "to"
         static let Language = "language"
         static let SortBy = "sortBy"
+        static let Domain = "domains"
     }
     
     // MARK: JSON Response Keys

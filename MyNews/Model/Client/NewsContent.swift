@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct TopHeadline : Codable {
+struct NewsContent : Codable {
     var sourceId: String?
     var sourceName: String?
     var author: String?
     var title: String?
     var description: String?
     var url: String?
-    var urlToImage: Double?
+    var urlToImage: String?
     var publishedAt: Date?
     
     
@@ -30,18 +30,18 @@ struct TopHeadline : Codable {
         title = dictionary[NewsClient.JSONResponseKeys.Title] as? String
         description = dictionary[NewsClient.JSONResponseKeys.Description] as? String
         url = dictionary[NewsClient.JSONResponseKeys.Url] as? String
-        urlToImage = dictionary[NewsClient.JSONResponseKeys.UrlToImage] as? Double
+        urlToImage = dictionary[NewsClient.JSONResponseKeys.UrlToImage] as? String
         publishedAt = dictionary[NewsClient.JSONResponseKeys.PublishedAt] as? Date
     }
     
-    static func topHeadlinesFromResult(_ result: [[String: AnyObject]]) -> [TopHeadline]{
+    static func newsContentFromResult(_ result: [[String: AnyObject]]) -> [NewsContent]{
         
-        var topHeadlines = [TopHeadline]()
+        var newsContent = [NewsContent]()
         
         for topHeadline in result {
-            topHeadlines.append(TopHeadline(topHeadline))
+            newsContent.append(NewsContent(topHeadline))
         }
         
-        return topHeadlines as [TopHeadline]
+        return newsContent as [NewsContent]
     }
 }
