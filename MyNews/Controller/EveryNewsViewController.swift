@@ -22,13 +22,15 @@ class EveryNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarItem.title = "Location News"
+        self.navigationItem.title = "Today's News"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let sv = UIViewController.displaySpinner(onView: self.view)
         NewsClient.sharedInstance().getTodaysNews(fromDate: getTodaysDate(), toDate: getTodaysDate()) { (todaysNews, error) in
+            UIViewController.removeSpinner(spinner: sv)
             
             func showErrorMessage(_ errorMessage: NSError) {
                 performUIUpdateOnMain {
@@ -58,17 +60,7 @@ class EveryNewsViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        var topNewsNavigationController = self.tabBarController?.viewControllers![1] as! UINavigationController
-        var topNewsViewController = topNewsNavigationController.topViewController as! TopNewsViewController
-        topNewsViewController.dataController = self.dataController
         
-        var favoriteNewsNavigationController = self.tabBarController?.viewControllers![2] as! UINavigationController
-        var favoriteNewsViewController = favoriteNewsNavigationController.topViewController as! FavoriteNewsViewController
-        favoriteNewsViewController.dataController = self.dataController
-        
-        var newsSourceNavigationController = self.tabBarController?.viewControllers![3] as! UINavigationController
-        var newsSourceViewController = newsSourceNavigationController.topViewController as! NewsSourceViewController
-        newsSourceViewController.dataController = self.dataController
     }
     
     override func viewDidDisappear(_ animated: Bool) {

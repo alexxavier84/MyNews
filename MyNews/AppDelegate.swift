@@ -29,6 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let everyNewsViewController = everyNewsNavigationController.topViewController as! EveryNewsViewController
         everyNewsViewController.dataController = dataController
         
+        var topNewsNavigationController = tabBarController.viewControllers![1] as! UINavigationController
+        var topNewsViewController = topNewsNavigationController.topViewController as! TopNewsViewController
+        topNewsViewController.dataController = dataController
+        
+        var favoriteNewsNavigationController = tabBarController.viewControllers![2] as! UINavigationController
+        var favoriteNewsViewController = favoriteNewsNavigationController.topViewController as! FavoriteNewsViewController
+        favoriteNewsViewController.dataController = dataController
+        
+        var newsSourceNavigationController = tabBarController.viewControllers![3] as! UINavigationController
+        var newsSourceViewController = newsSourceNavigationController.topViewController as! NewsSourceViewController
+        newsSourceViewController.dataController = dataController
+        
         return true
     }
 

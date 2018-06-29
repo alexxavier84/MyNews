@@ -17,7 +17,7 @@
 		189A0E1220DFAD4600598448 /* EveryNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A0E1120DFAD4600598448 /* EveryNewsViewController.swift */; };
 		189A0E1420DFAD6200598448 /* FavoriteNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A0E1320DFAD6200598448 /* FavoriteNewsViewController.swift */; };
 		189A0E1620DFAD8100598448 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A0E1520DFAD8100598448 /* NewsDetailsViewController.swift */; };
-		189A0E1820DFADAC00598448 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A0E1720DFADAC00598448 /* SettingsViewController.swift */; };
+		189A0E1820DFADAC00598448 /* NewsFromSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A0E1720DFADAC00598448 /* NewsFromSourceViewController.swift */; };
 		189A0E1A20DFE47400598448 /* NewsSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A0E1920DFE47400598448 /* NewsSourceViewController.swift */; };
 		189A0E1C20E01E1300598448 /* NewsConveniance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A0E1B20E01E1200598448 /* NewsConveniance.swift */; };
 		18E3120D20E1C57100C0437B /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3120C20E1C57100C0437B /* GCDBlackBox.swift */; };
@@ -29,6 +29,7 @@
 		18E3121B20E475D500C0437B /* My_News.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E3121920E475D500C0437B /* My_News.xcdatamodeld */; };
 		18E3121D20E479C600C0437B /* MapLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3121C20E479C600C0437B /* MapLoader.swift */; };
 		18E3122120E5616600C0437B /* NewsLikeReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3122020E5616600C0437B /* NewsLikeReasonViewController.swift */; };
+		18E3122320E65A4000C0437B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3122220E65A4000C0437B /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +45,7 @@
 		189A0E1120DFAD4600598448 /* EveryNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveryNewsViewController.swift; sourceTree = "<group>"; };
 		189A0E1320DFAD6200598448 /* FavoriteNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNewsViewController.swift; sourceTree = "<group>"; };
 		189A0E1520DFAD8100598448 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
-		189A0E1720DFADAC00598448 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		189A0E1720DFADAC00598448 /* NewsFromSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFromSourceViewController.swift; sourceTree = "<group>"; };
 		189A0E1920DFE47400598448 /* NewsSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceViewController.swift; sourceTree = "<group>"; };
 		189A0E1B20E01E1200598448 /* NewsConveniance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsConveniance.swift; sourceTree = "<group>"; };
 		18E3120C20E1C57100C0437B /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		18E3121A20E475D500C0437B /* My_News.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_News.xcdatamodel; sourceTree = "<group>"; };
 		18E3121C20E479C600C0437B /* MapLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLoader.swift; sourceTree = "<group>"; };
 		18E3122020E5616600C0437B /* NewsLikeReasonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsLikeReasonViewController.swift; sourceTree = "<group>"; };
+		18E3122220E65A4000C0437B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +150,9 @@
 				189A0E1120DFAD4600598448 /* EveryNewsViewController.swift */,
 				189A0E1320DFAD6200598448 /* FavoriteNewsViewController.swift */,
 				189A0E1520DFAD8100598448 /* NewsDetailsViewController.swift */,
-				189A0E1720DFADAC00598448 /* SettingsViewController.swift */,
+				189A0E1720DFADAC00598448 /* NewsFromSourceViewController.swift */,
 				189A0E1920DFE47400598448 /* NewsSourceViewController.swift */,
+				18E3122220E65A4000C0437B /* UIViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				189A0E1C20E01E1300598448 /* NewsConveniance.swift in Sources */,
 				18E3121D20E479C600C0437B /* MapLoader.swift in Sources */,
 				18E3120F20E1C5BD00C0437B /* DataController.swift in Sources */,
+				18E3122320E65A4000C0437B /* UIViewController.swift in Sources */,
 				18E3121120E1CADB00C0437B /* NewsSource.swift in Sources */,
 				18E3121520E1D03B00C0437B /* News.swift in Sources */,
 				189A0E1420DFAD6200598448 /* FavoriteNewsViewController.swift in Sources */,
@@ -274,7 +278,7 @@
 				189A0E0C20DFA67800598448 /* NewsClient.swift in Sources */,
 				18E3121B20E475D500C0437B /* My_News.xcdatamodeld in Sources */,
 				18E3122120E5616600C0437B /* NewsLikeReasonViewController.swift in Sources */,
-				189A0E1820DFADAC00598448 /* SettingsViewController.swift in Sources */,
+				189A0E1820DFADAC00598448 /* NewsFromSourceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

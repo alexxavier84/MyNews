@@ -38,7 +38,7 @@ class FavoriteNewsViewController: UIViewController {
         
         setupFetchedResultsController()
         
-        self.tabBarItem.title = "Favorite News"
+        self.navigationItem.title = "Your Favorite News"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,20 +47,8 @@ class FavoriteNewsViewController: UIViewController {
         setupFetchedResultsController()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        /*var topNewsViewController = self.tabBarController?.viewControllers![1] as! TopNewsViewController
-        topNewsViewController.dataController = self.dataController
-        
-        var everyNewsViewController = self.tabBarController?.viewControllers![0] as! EveryNewsViewController
-        everyNewsViewController.dataController = self.dataController
-        
-        var newsSourceViewController = self.tabBarController?.viewControllers![3] as! NewsSourceViewController
-        newsSourceViewController.dataController = self.dataController*/
-    }
     
     override func viewDidDisappear(_ animated: Bool) {
-        
-        
         self.fetchedResultsController = nil
     }
     

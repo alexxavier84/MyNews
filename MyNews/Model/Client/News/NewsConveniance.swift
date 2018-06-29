@@ -85,5 +85,27 @@ extension NewsClient{
         
     }
     
-    
+    func getNewsFromSource(sourceId: String, completionHandlerForNewsFromSource: @escaping(_ result: [NewsContent]?, _ error: NSError?) -> Void){
+        
+        let parameters = [
+            NewsClient.ParameterKeys.Sources : sourceId,
+            NewsClient.ParameterKeys.ApiKey : NewsClient.Constants.ApiKey
+        ]
+        
+        self.taskForGETMethod(method: NewsClient.Methods.Everything, parameters: parameters as [String : AnyObject]) { (response, error) in
+            
+            guard error == nil else{
+                completionHandlerForNewsFromSource(nil, error)
+                return
+            }
+            
+            guard let newsFromSource = response![NewsClient.JSONResponseKeys.Articles] as? [[String: AnyObject]] else {
+                completionHandlerForNewsFromSource(nil, NSError(domain: "getNewsFromSource", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse every news from source json"]))
+                return
+            }
+            
+            completionHandlerForNewsFromSource(NewsContent.newsContentFromResult(newsFromSource), nil)
+        }
+        
+    }
 }

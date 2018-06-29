@@ -1,5 +1,5 @@
 //
-//  NewsSourceViewController.swift
+//  SettingsViewController.swift
 //  MyNews
 //
 //  Created by Apple on 24/06/18.
@@ -9,29 +9,27 @@
 import Foundation
 import UIKit
 
-class NewsSourceViewController: UIViewController {
+class NewsFromSourceViewController: UIViewController {
     
-    var dataController:DataController!
-    
-    var newsSources: [NewsSource] = [NewsSource]()
+    var newsContents: [NewsContent] = [NewsContent]()
+    var newsContent: NewsContent?
     var newsSource: NewsSource?
     
+    var dataController:DataController!
     
     @IBOutlet weak var tableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "News Sources in Your Country"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        var isoCountryCode = UserDefaults.standard.value(forKey: "countryCode") ?? "us"
-        
         let sv = UIViewController.displaySpinner(onView: self.view)
-        NewsClient.sharedInstance().getNewsSources(language: "en", country: isoCountryCode as! String) { (newsSources, error) in
+        NewsClient.sharedInstance().getNewsFromSource(sourceId: (newsSource?.id)!) { (newsContents, error) in
+            
             UIViewController.removeSpinner(spinner: sv)
             
             func showErrorMessage(_ errorMessage: NSError) {
@@ -52,43 +50,45 @@ class NewsSourceViewController: UIViewController {
                 return
             }
             
-            self.newsSources = newsSources!
+            self.newsContents = newsContents!
             
             performUIUpdateOnMain {
                 self.tableView.reloadData()
             }
+            
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSourceNewsListingIdentifier"{
-            if let newsFromSourceViewController = segue.destination as? NewsFromSourceViewController {
-                newsFromSourceViewController.dataController = self.dataController
-                newsFromSourceViewController.newsSource = self.newsSource
-                
+        if segue.identifier == "showSourceNewsIdentifier"{
+            if let newsDetailsViewController = segue.destination as? NewsDetailsViewController {
+                newsDetailsViewController.newsContent = self.newsContent ?? nil
+                newsDetailsViewController.dataController = self.dataController
             }
         }
     }
     
 }
 
-extension NewsSourceViewController : UITableViewDataSource, UITableViewDelegate{
+extension NewsFromSourceViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.newsSources.count 
+        return self.newsContents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "sourceNewsReuseIdentifier", for: indexPath)
         
-        let tableCell = tableView.dequeueReusableCell(withIdentifier: "newsSourceReuseIdnetifier", for: indexPath)
-        tableCell.textLabel?.text = self.newsSources[indexPath.item].name
+        tableCell.textLabel?.text = self.newsContents[indexPath.item].title
+        tableCell.detailTextLabel?.text = self.newsContents[indexPath.item].description
+        
         return tableCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.newsSource = self.newsSources[indexPath.item]
+        self.newsContent = self.newsContents[indexPath.item]
         
-        performSegue(withIdentifier: "showSourceNewsListingIdentifier", sender: nil)
+        performSegue(withIdentifier: "showSourceNewsIdentifier", sender: nil)
     }
     
 }

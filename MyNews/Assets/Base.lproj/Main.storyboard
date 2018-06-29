@@ -286,10 +286,10 @@
             </objects>
             <point key="canvasLocation" x="1809" y="894"/>
         </scene>
-        <!--View Controller-->
+        <!--News From Source View Controller-->
         <scene sceneID="KPB-we-WVU">
             <objects>
-                <viewController id="MuO-ww-Zze" sceneMemberID="viewController">
+                <viewController id="MuO-ww-Zze" customClass="NewsFromSourceViewController" customModule="MyNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wpF-GV-IZC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,6 +323,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="MuO-ww-Zze" id="yJi-He-C2i"/>
+                                    <outlet property="delegate" destination="MuO-ww-Zze" id="6HB-Ca-qhX"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -335,6 +339,7 @@
                         <viewLayoutGuide key="safeArea" id="FNQ-wu-Xqi"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="dGB-9h-AEc" id="S1q-ZG-W7y"/>
                         <segue destination="lXB-lk-ugN" kind="show" identifier="showSourceNewsIdentifier" id="3d0-jU-js4"/>
                     </connections>
                 </viewController>
@@ -508,6 +513,6 @@
         <image name="today_apps" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ROg-1t-EkV"/>
+        <segue reference="3d0-jU-js4"/>
     </inferredMetricsTieBreakers>
 </document>

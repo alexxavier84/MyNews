@@ -24,17 +24,17 @@ class TopNewsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.tabBarItem.title = "Top News"
+        self.navigationItem.title = "Top News in Your Country"
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = true
-        
         var isoCountryCode = UserDefaults.standard.value(forKey: "countryCode") ?? "us"
         
+        let sv = UIViewController.displaySpinner(onView: self.view)
         NewsClient.sharedInstance().getTopHeadlines(country: isoCountryCode as! String) { (topHeadlines, error) in
+            UIViewController.removeSpinner(spinner: sv)
             
             func showErrorMessage(_ errorMessage: NSError) {
                 performUIUpdateOnMain {
@@ -64,16 +64,6 @@ class TopNewsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
-        /*
-        var everyNewsController = self.tabBarController?.viewControllers![0] as! EveryNewsViewController
-        everyNewsController.dataController = self.dataController
-        
-        var favoriteNewsController = self.tabBarController?.viewControllers![2] as! FavoriteNewsViewController
-        favoriteNewsController.dataController = self.dataController
-        
-        var newsSourceViewController = self.tabBarController?.viewControllers![3] as! NewsSourceViewController
-        newsSourceViewController.dataController = self.dataController*/
     }
     
     override func viewDidDisappear(_ animated: Bool) {
