@@ -12,11 +12,11 @@ This make use of News API ( [https://newsapi.org)](https://newsapi.org)) to get 
 - **News Sources** : List all the news sources of the country you are currently in. App uses your current location coordinates to identify your country and list all the news sources for that country. User can scroll through all the news sources and select the source from where you want to read the news.
 - **Read News** : Allows you to read the news article from today's news, top news, favorite news and news source. User have the option to favorite a news and be able to see all the favorited news later
 
-![Todays News](MyNews/MyNews/Screenshots/todaysnews.png)
-![Top News](MyNews/MyNews/Screenshots/topnews.png)
-![Favorite News](MyNews/MyNews/Screenshots/favoritenews.png)
-![News Sources](MyNews/MyNews/Screenshots/newssource.png)
-![Source News listing](MyNews/MyNews/Screenshots/sourcenews.png)
-![News Read Pane](MyNews/MyNews/Screenshots/newsread.png)
-![Like News](MyNews/MyNews/Screenshots/newslike.png)
+![Todays News](https://github.com/alexxavier84/MyNews/tree/master/MyNews/MyNews/Screenshots/todaysnews.png)
+![Top News](https://github.com/alexxavier84/MyNews/tree/master/MyNews/MyNews/Screenshots/topnews.png)
+![Favorite News](https://github.com/alexxavier84/MyNews/tree/master/MyNews/MyNews/Screenshots/favoritenews.png)
+![News Sources](https://github.com/alexxavier84/MyNews/tree/master/MyNews/MyNews/Screenshots/newssource.png)
+![Source News listing](https://github.com/alexxavier84/MyNews/tree/master/MyNews/MyNews/Screenshots/sourcenews.png)
+![News Read Pane](https://github.com/alexxavier84/MyNews/tree/master/MyNews/MyNews/Screenshots/newsread.png)
+![Like News](https://github.com/alexxavier84/MyNews/tree/master/MyNews/MyNews/Screenshots/newslike.png)
 
