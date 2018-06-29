@@ -34,6 +34,17 @@ struct NewsContent : Codable {
         publishedAt = dictionary[NewsClient.JSONResponseKeys.PublishedAt] as? Date
     }
     
+    init(_ favoriteNewsData: FavoriteNewsData) {
+        sourceId = favoriteNewsData.sourceId
+        sourceName = favoriteNewsData.sourceName
+        author = favoriteNewsData.author
+        title = favoriteNewsData.title
+        description = favoriteNewsData.newsDescription
+        url = favoriteNewsData.url
+        urlToImage = favoriteNewsData.urlToImage
+        publishedAt = favoriteNewsData.publishedAt
+    }
+    
     static func newsContentFromResult(_ result: [[String: AnyObject]]) -> [NewsContent]{
         
         var newsContent = [NewsContent]()

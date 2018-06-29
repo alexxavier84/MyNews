@@ -15,6 +15,8 @@ class FavoriteNewsViewController: UIViewController {
     var dataController:DataController!
     var fetchedResultsController: NSFetchedResultsController<FavoriteNewsData>!
     
+    var newsContent: NewsContent?
+    
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate func setupFetchedResultsController(){
@@ -52,6 +54,15 @@ class FavoriteNewsViewController: UIViewController {
         self.fetchedResultsController = nil
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFavoriteNewsIdentifier"{
+            if let newsDetailsViewController = segue.destination as? NewsDetailsViewController {
+                newsDetailsViewController.newsContent = self.newsContent ?? nil
+                newsDetailsViewController.dataController = self.dataController
+            }
+        }
+    }
+    
 }
 
 extension FavoriteNewsViewController: UITableViewDataSource, UITableViewDelegate{
@@ -71,7 +82,9 @@ extension FavoriteNewsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.newsContent = NewsContent(self.fetchedResultsController.object(at: indexPath))
         
+        performSegue(withIdentifier: "showFavoriteNewsIdentifier", sender: nil)
     }
     
 }
