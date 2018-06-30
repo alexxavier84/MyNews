@@ -45,8 +45,10 @@ class NewsFromSourceViewController: UIViewController {
             
             if let error = error, error != nil {
                 performUIUpdateOnMain {
+                    UIViewController.removeSpinner(spinner: sv)
                     showErrorMessage(error)
                 }
+                
                 return
             }
             

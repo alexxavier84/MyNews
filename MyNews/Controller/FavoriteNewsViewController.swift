@@ -24,8 +24,6 @@ class FavoriteNewsViewController: UIViewController {
         let sortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        print(dataController)
-        
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do{

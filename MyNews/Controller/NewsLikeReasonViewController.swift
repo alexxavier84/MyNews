@@ -42,6 +42,7 @@ class NewsLikeReasonViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        newsLikeReasonTextView.delegate = self
         
         setupFetchedResultsController()
         subscribeToKeyboardNotification()
@@ -94,10 +95,14 @@ extension NewsLikeReasonViewController : NSFetchedResultsControllerDelegate{
     
 }
 
-extension NewsLikeReasonViewController: UITextFieldDelegate{
+extension NewsLikeReasonViewController: UITextViewDelegate{
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
         return true
     }
     
@@ -119,7 +124,7 @@ extension NewsLikeReasonViewController{
     
     @objc func keyboardWillShow(_ notification:Notification) {
         //Shift view to accomodate keyboard when bottom text is being edited
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        view.frame.origin.y = view.frame.origin.y - getKeyboardHeight(notification)
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -131,6 +136,6 @@ extension NewsLikeReasonViewController{
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        return keyboardSize.cgRectValue.height - 64
+        return keyboardSize.cgRectValue.height
     }
 }

@@ -169,7 +169,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfT-9K-4gP">
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UfT-9K-4gP">
                                 <rect key="frame" x="67" y="169" width="240" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say why you like this" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgU-QH-hNl">
@@ -178,7 +178,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-It-OeY">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-It-OeY">
                                         <rect key="frame" x="20" y="84" width="200" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -188,7 +188,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q58-FW-vIB">
-                                        <rect key="frame" x="30" y="236" width="180" height="34"/>
+                                        <rect key="frame" x="30" y="232" width="180" height="38"/>
                                         <color key="backgroundColor" red="0.3196374241287685" green="0.4574483369173995" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Submit">
@@ -208,6 +208,7 @@
                                     <constraint firstItem="bwA-It-OeY" firstAttribute="leading" secondItem="UfT-9K-4gP" secondAttribute="leading" constant="20" id="Orc-11-Uwq"/>
                                     <constraint firstAttribute="trailing" secondItem="PgU-QH-hNl" secondAttribute="trailing" id="Zxm-O1-6qa"/>
                                     <constraint firstItem="PgU-QH-hNl" firstAttribute="top" secondItem="UfT-9K-4gP" secondAttribute="top" constant="20" id="hAj-DH-pCD"/>
+                                    <constraint firstItem="Q58-FW-vIB" firstAttribute="top" secondItem="bwA-It-OeY" secondAttribute="bottom" constant="20" id="j4i-Eq-Wqt"/>
                                     <constraint firstAttribute="trailing" secondItem="Q58-FW-vIB" secondAttribute="trailing" constant="30" id="lGZ-JT-gR4"/>
                                     <constraint firstAttribute="trailing" secondItem="bwA-It-OeY" secondAttribute="trailing" constant="20" id="lNR-u0-heH"/>
                                     <constraint firstAttribute="bottom" secondItem="Q58-FW-vIB" secondAttribute="bottom" constant="30" id="pGE-js-RHN"/>
@@ -513,6 +514,6 @@
         <image name="today_apps" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3d0-jU-js4"/>
+        <segue reference="ROg-1t-EkV"/>
     </inferredMetricsTieBreakers>
 </document>
