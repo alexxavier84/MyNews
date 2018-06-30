@@ -20,3 +20,11 @@ This make use of News API ( [https://newsapi.org)](https://newsapi.org)) to get 
 ![News Read Pane](https://raw.githubusercontent.com/alexxavier84/MyNews/master/MyNews/Screenshots/newsread.png)
 ![Like News](https://raw.githubusercontent.com/alexxavier84/MyNews/master/MyNews/Screenshots/newslike.png)
 
+# How to run the app
+
+- * Download the MyNews project from Github
+- * Double click on the file MyNews.xcodeproj (Make sure Xcode is installed in your Mac Book). This will open the MyNews project in Xcode
+- * You can run the app on an Apple device connected to the Mac Book or use the simulator. Select the device or simulator as shown below
+![Select Simulator](https://raw.githubusercontent.com/alexxavier84/MyNews/master/MyNews/Screenshots/selectsimulator.png)
+- * Build and run the app using the play button
+![Run App](https://raw.githubusercontent.com/alexxavier84/MyNews/master/MyNews/Screenshots/runapp.png)

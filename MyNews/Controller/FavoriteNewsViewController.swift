@@ -47,6 +47,10 @@ class FavoriteNewsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupFetchedResultsController()
+        
+        performUIUpdateOnMain {
+            self.tableView.reloadData()
+        }
     }
     
     

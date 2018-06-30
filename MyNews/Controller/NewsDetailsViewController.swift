@@ -32,7 +32,6 @@ class NewsDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
     }
     
     @IBAction func onFavoritButtonTouch(_ sender: Any) {
