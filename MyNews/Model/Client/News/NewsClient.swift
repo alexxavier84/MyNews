@@ -36,7 +36,10 @@ class NewsClient: NSObject {
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError(error! as NSError)
+                if let error = error{
+                    sendError(error as NSError)
+                }
+                
                 return
             }
             

@@ -17,12 +17,16 @@ class NewsDetailsViewController: UIViewController {
     
     var newsContent: NewsContent?
     
+    var sv: UIView!
+    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var toggleFavoriteButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sv = UIViewController.displaySpinner(onView: self.view)
         
         let url = NSURL (string: (self.newsContent?.url)!);
         let request = NSURLRequest(url: url! as URL);
@@ -31,6 +35,8 @@ class NewsDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        webView.navigationDelegate = self
         
     }
     
@@ -45,5 +51,32 @@ class NewsDetailsViewController: UIViewController {
                 newsLikeReasonViewController.dataController = self.dataController
             }
         }
+    }
+}
+
+extension NewsDetailsViewController : WKNavigationDelegate{
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        func showErrorMessage(_ errorMessage: NSError) {
+            performUIUpdateOnMain {
+                let okAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                }
+                
+                let alert = UIAlertController(title: "", message: errorMessage.localizedDescription, preferredStyle: .alert)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+        if error != nil {
+            performUIUpdateOnMain {
+                showErrorMessage(error as NSError)
+            }
+            return
+        }
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        UIViewController.removeSpinner(spinner: sv)
     }
 }
