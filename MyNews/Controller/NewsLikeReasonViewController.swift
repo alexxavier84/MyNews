@@ -44,13 +44,19 @@ class NewsLikeReasonViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupFetchedResultsController()
+        subscribeToKeyboardNotification()
         
         popupView.layer.cornerRadius = 10
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeFromKeyboardNotifications()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         self.fetchedResultsController = nil
     }
+    
     
     
     @IBAction func onSubmitTouch(_ sender: Any) {
@@ -86,6 +92,45 @@ class NewsLikeReasonViewController: UIViewController {
 
 extension NewsLikeReasonViewController : NSFetchedResultsControllerDelegate{
     
+}
+
+extension NewsLikeReasonViewController: UITextFieldDelegate{
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
     
+}
+
+extension NewsLikeReasonViewController{
+    //Subscribe to keyboard notification
+    func subscribeToKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    //Unsubscribe from keyboard notification
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+        //Shift view to accomodate keyboard when bottom text is being edited
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        //Move view to original position when keyboard is hidden
+        view.frame.origin.y = 0
+    }
+    
+    //Get keyboard height
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height - 64
+    }
 }
