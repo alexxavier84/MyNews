@@ -62,6 +62,10 @@ class NewsSourceViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSourceNewsListingIdentifier"{
             if let newsFromSourceViewController = segue.destination as? NewsFromSourceViewController {

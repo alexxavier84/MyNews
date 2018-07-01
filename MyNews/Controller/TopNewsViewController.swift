@@ -68,11 +68,6 @@ class TopNewsViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        
-        
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTopNewsIdentifier"{
             if let newsDetailsViewController = segue.destination as? NewsDetailsViewController {
