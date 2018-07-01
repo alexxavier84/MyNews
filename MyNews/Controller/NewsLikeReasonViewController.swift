@@ -132,7 +132,8 @@ extension NewsLikeReasonViewController{
     
     @objc func keyboardWillShow(_ notification:Notification) {
         //Shift view to accomodate keyboard when bottom text is being edited
-        view.frame.origin.y = view.frame.origin.y - getKeyboardHeight(notification)
+        //view.frame.origin.y = view.frame.origin.y - getKeyboardHeight(notification)
+        popupView.frame.origin.y = 0
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
