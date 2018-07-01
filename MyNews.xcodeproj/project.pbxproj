@@ -30,6 +30,7 @@
 		18E3121D20E479C600C0437B /* MapLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3121C20E479C600C0437B /* MapLoader.swift */; };
 		18E3122120E5616600C0437B /* NewsLikeReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3122020E5616600C0437B /* NewsLikeReasonViewController.swift */; };
 		18E3122320E65A4000C0437B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3122220E65A4000C0437B /* UIViewController.swift */; };
+		18F95D2720E82F2C00CD456D /* ModalTransitionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F95D2620E82F2C00CD456D /* ModalTransitionMediator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		18E3121C20E479C600C0437B /* MapLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLoader.swift; sourceTree = "<group>"; };
 		18E3122020E5616600C0437B /* NewsLikeReasonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsLikeReasonViewController.swift; sourceTree = "<group>"; };
 		18E3122220E65A4000C0437B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		18F95D2620E82F2C00CD456D /* ModalTransitionMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransitionMediator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,11 +150,12 @@
 				18E3122020E5616600C0437B /* NewsLikeReasonViewController.swift */,
 				189A0DF620DFA56600598448 /* TopNewsViewController.swift */,
 				189A0E1120DFAD4600598448 /* EveryNewsViewController.swift */,
-				189A0E1320DFAD6200598448 /* FavoriteNewsViewController.swift */,
 				189A0E1520DFAD8100598448 /* NewsDetailsViewController.swift */,
+				189A0E1320DFAD6200598448 /* FavoriteNewsViewController.swift */,
 				189A0E1720DFADAC00598448 /* NewsFromSourceViewController.swift */,
 				189A0E1920DFE47400598448 /* NewsSourceViewController.swift */,
 				18E3122220E65A4000C0437B /* UIViewController.swift */,
+				18F95D2620E82F2C00CD456D /* ModalTransitionMediator.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				189A0E1420DFAD6200598448 /* FavoriteNewsViewController.swift in Sources */,
 				189A0E1620DFAD8100598448 /* NewsDetailsViewController.swift in Sources */,
 				189A0DF720DFA56600598448 /* TopNewsViewController.swift in Sources */,
+				18F95D2720E82F2C00CD456D /* ModalTransitionMediator.swift in Sources */,
 				18E3120D20E1C57100C0437B /* GCDBlackBox.swift in Sources */,
 				189A0DF520DFA56600598448 /* AppDelegate.swift in Sources */,
 				189A0E1A20DFE47400598448 /* NewsSourceViewController.swift in Sources */,

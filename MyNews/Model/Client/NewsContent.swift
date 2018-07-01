@@ -17,6 +17,7 @@ struct NewsContent : Codable {
     var url: String?
     var urlToImage: String?
     var publishedAt: Date?
+    var newsLikeReason: String?
     
     
     init(_ dictionary: [String: AnyObject]) {
@@ -32,6 +33,7 @@ struct NewsContent : Codable {
         url = dictionary[NewsClient.JSONResponseKeys.Url] as? String
         urlToImage = dictionary[NewsClient.JSONResponseKeys.UrlToImage] as? String
         publishedAt = dictionary[NewsClient.JSONResponseKeys.PublishedAt] as? Date
+        newsLikeReason = ""
     }
     
     init(_ favoriteNewsData: FavoriteNewsData) {
@@ -43,6 +45,7 @@ struct NewsContent : Codable {
         url = favoriteNewsData.url
         urlToImage = favoriteNewsData.urlToImage
         publishedAt = favoriteNewsData.publishedAt
+        newsLikeReason = favoriteNewsData.newsLikeReason
     }
     
     static func newsContentFromResult(_ result: [[String: AnyObject]]) -> [NewsContent]{

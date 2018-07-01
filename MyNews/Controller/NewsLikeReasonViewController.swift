@@ -13,9 +13,12 @@ import CoreData
 class NewsLikeReasonViewController: UIViewController {
     
     var newsContent: NewsContent?
+    var isFavoriteNews: Bool?
     
     var dataController:DataController!
     var fetchedResultsController: NSFetchedResultsController<FavoriteNewsData>!
+    
+    weak var delegate: ModalTransitionListener?
     
     @IBOutlet weak var newsLikeReasonTextView: UITextView!
     @IBOutlet weak var popupView: UIView!
@@ -42,6 +45,9 @@ class NewsLikeReasonViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        newsLikeReasonTextView.text = newsContent?.newsLikeReason
+        newsLikeReasonTextView.isEditable = !isFavoriteNews!
         newsLikeReasonTextView.delegate = self
         
         setupFetchedResultsController()
@@ -62,27 +68,29 @@ class NewsLikeReasonViewController: UIViewController {
     
     @IBAction func onSubmitTouch(_ sender: Any) {
         
-        let favoriteNewsData = FavoriteNewsData(context: self.dataController.viewContext)
-        favoriteNewsData.sourceId = self.newsContent?.sourceId ?? ""
-        favoriteNewsData.sourceName = self.newsContent?.sourceName ?? ""
-        favoriteNewsData.author = self.newsContent?.author ?? ""
-        favoriteNewsData.title = self.newsContent?.title ?? ""
-        favoriteNewsData.newsDescription = self.newsContent?.description ?? ""
-        favoriteNewsData.url = self.newsContent?.url ?? ""
-        favoriteNewsData.urlToImage = self.newsContent?.urlToImage ?? ""
-        favoriteNewsData.newsLikeReason = newsLikeReasonTextView.text
-        favoriteNewsData.publishedAt = self.newsContent?.publishedAt ?? Date()
-        
-        
-        if self.dataController.viewContext.hasChanges{
-            do{
-                try self.dataController.viewContext.save()
-            } catch {
-                print(error)
-            }
+        if !isFavoriteNews! {
+            let favoriteNewsData = FavoriteNewsData(context: self.dataController.viewContext)
+            favoriteNewsData.sourceId = self.newsContent?.sourceId ?? ""
+            favoriteNewsData.sourceName = self.newsContent?.sourceName ?? ""
+            favoriteNewsData.author = self.newsContent?.author ?? ""
+            favoriteNewsData.title = self.newsContent?.title ?? ""
+            favoriteNewsData.newsDescription = self.newsContent?.description ?? ""
+            favoriteNewsData.url = self.newsContent?.url ?? ""
+            favoriteNewsData.urlToImage = self.newsContent?.urlToImage ?? ""
+            favoriteNewsData.newsLikeReason = newsLikeReasonTextView.text
+            favoriteNewsData.publishedAt = self.newsContent?.publishedAt ?? Date()
             
+            
+            if self.dataController.viewContext.hasChanges{
+                do{
+                    try self.dataController.viewContext.save()
+                } catch {
+                    print(error)
+                }
+                
+            }
         }
-        
+        self.delegate?.popoverDismissed()
         self.dismiss(animated: true) {
             
         }
