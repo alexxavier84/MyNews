@@ -107,6 +107,7 @@ extension NewsDetailsViewController : WKNavigationDelegate{
         
         if error != nil {
             performUIUpdateOnMain {
+                self.toggleFavoriteButton.isEnabled = false
                 showErrorMessage(error as NSError)
             }
             return
@@ -144,7 +145,7 @@ extension NewsDetailsViewController: ModalTransitionListener{
         let request = NSURLRequest(url: url! as URL);
         webView.load(request as URLRequest)
         
-        webView.navigationDelegate = self
+        //webView.navigationDelegate = self
         
     }
 }
